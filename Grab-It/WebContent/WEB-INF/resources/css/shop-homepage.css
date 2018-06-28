@@ -1,0 +1,26 @@
+body {
+  padding-top: 54px;
+  height:100%;
+}
+html{
+	height:100%;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.wrapper{
+	min-height:100%;
+	position:relative;
+}
+.footer1{
+	 position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.content{
+	padding-bottom:120px;
+}
