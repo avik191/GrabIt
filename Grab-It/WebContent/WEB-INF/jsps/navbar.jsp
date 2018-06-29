@@ -23,8 +23,8 @@
             <li  id="about" <c:if test="${isAbout == true }"> class="active"</c:if>>
               <a class="nav-link" href="/Grab-It/about">About</a>
             </li>
-            <li  id="products" <c:if test="${isProducts == true }"> class="active"</c:if>>
-              <a class="nav-link" href="/Grab-It/allproducts">Products</a>
+            <li  id="products" <c:if test="${isAllProducts == true }"> class="active"</c:if>>
+              <a class="nav-link" href="/Grab-It/all/Products">Products</a>
             </li>
             <li  id="contact" <c:if test="${isContact == true }"> class="active"</c:if>>
               <a class="nav-link" href="/Grab-It/contact">Contact</a>

@@ -16,15 +16,19 @@
     <title>GrabIt - ${title } </title>
     
     <script> window.menu= '${title}' </script>
-
-    <!-- Bootstrap core CSS -->
-    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="./resources/css/shop-homepage.css" rel="stylesheet">
     
-    <!-- Bootstrap theme -->
-    <link href="./resources/css/bootstrap-theme.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap.min.css'/>" />
+     <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/shop-homepage.css'/>" />
+     <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap-theme.css'/>" />
+
+    <!-- Bootstrap core CSS 
+    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template 
+    <link href="./resources/css/shop-homepage.css" rel="stylesheet">-->
+    
+    <!-- Bootstrap theme 
+    <link href="./resources/css/bootstrap-theme.css" rel="stylesheet">-->
 
   </head>
 
@@ -40,7 +44,6 @@
     <!-- Page Content -->
     
     <div class="content">
-    
 	    <c:if test="${isHome == true }">
 	    	<%@ include file="home_page.jsp" %>
 	    </c:if>
@@ -49,8 +52,12 @@
 	    	<%@ include file="about_page.jsp" %>
 	    </c:if>
 	    
-	    <c:if test="${isProducts == true }">
-	    	<%@ include file="allproduct_page.jsp" %>
+	    <c:if test="${isAllProducts == true}">
+	    	<%@ include file="showproducts.jsp" %>
+	    </c:if>
+	    
+	     <c:if test="${isCategoryProduct == true }">
+	    	<%@ include file="showproducts.jsp" %>
 	    </c:if>
 	    
 	    <c:if test="${isContact == true }">
@@ -63,10 +70,12 @@
     <!-- Footer -->
     <%@ include file="footer.jsp" %>
 
-    <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript
     <script src="./resources/js/jquery.js"></script>
-    <script src="./resources/js/bootstrap.bundle.min.js"></script>
+    <script src="./resources/js/bootstrap.bundle.min.js"></script> -->
     
+    <script src="<c:url value='/./resources/js/jquery.js'/>"></script>
+    <script src=" <c:url value='/./resources/js/bootstrap.bundle.min.js'/>"></script>
     </div>
   </body>
 
