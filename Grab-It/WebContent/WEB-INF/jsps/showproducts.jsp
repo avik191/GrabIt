@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +18,7 @@
 			</div>
 
 			<div class="col-lg-9">
-   			 </br>
+				</br>
 
 				<!-- adding breadcrum component -->
 
@@ -39,7 +39,7 @@
 							<ol class="breadcrumb">
 								<li><a href="/Grab-It/home">Home</a></li>
 								<li class="active">/Category</li>
-								<li class="active">/${category.name }</li>							
+								<li class="active">/${category.name }</li>
 							</ol>
 
 						</c:if>
@@ -48,6 +48,23 @@
 					</div>
 				</div>
 
+				<div class="row">
+
+					<div class="col-lg-12">
+
+						<table id="tableProductList"
+							class="table table-striped table-borderd">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>NAME</th>
+								</tr>
+							</thead>
+
+						</table>
+
+					</div>
+				</div>
 			</div>
 
 		</div>

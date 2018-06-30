@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.DAO.CategoryDAO;
 import com.Entity.Category;
+import com.Entity.Product;
 import com.Service.CategoryService;
+import com.Service.ProductService;
 
 @Controller
 public class WebController {
@@ -19,6 +23,8 @@ public class WebController {
 	CategoryDAO categoryDAO;
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	ProductService productService;
 	
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	protected ModelAndView homePage() throws Exception
@@ -35,26 +41,11 @@ public class WebController {
 	@RequestMapping(value = {"/test"})
 	protected ModelAndView addCategory() throws Exception
 	{
-		Category category;
-		category = new Category();
-		category.setName("Xbox");
-		category.setDescription("Xbox here");
-		category.setImageURL("Xbox.png");
-		boolean b = categoryService.addCategory(category);
-		System.out.println(b+" category added");
+
 		
-		Category category2 = categoryService.getCategoryFromId(3);
-		System.out.println(category2.getName());
-		
-		Category category3 = categoryService.getCategoryFromId(4);
-		category3.setImageURL("tv.png");
-		b = categoryService.updateCategory(category3);
-		System.out.println(b+" category updated");
-		
-		Category category4 = categoryService.getCategoryFromId(8);
-		category4.setActive(0);
-		b = categoryService.updateCategory(category4);
-		System.out.println(b+" category deleted");
+		List<Product> list= productService.getActiveProductFromCategory(5);
+		System.out.println(list.size());
+
 
 		
 		ModelAndView modelAndView = new ModelAndView("home");

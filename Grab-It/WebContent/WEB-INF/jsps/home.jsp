@@ -70,12 +70,16 @@
     <!-- Footer -->
     <%@ include file="footer.jsp" %>
 
-    <!-- Bootstrap core JavaScript
-    <script src="./resources/js/jquery.js"></script>
-    <script src="./resources/js/bootstrap.bundle.min.js"></script> -->
     
     <script src="<c:url value='/./resources/js/jquery.js'/>"></script>
     <script src=" <c:url value='/./resources/js/bootstrap.bundle.min.js'/>"></script>
+    
+    <!-- including JQUERY DATA TABLES -->
+        <script src="<c:url value='/./resources/js/jquery.dataTables.js'/>"></script>
+        
+     <!-- including custom js file -->
+        <script src="<c:url value='/./resources/js/myapp.js'/>"></script>
+    
     </div>
   </body>
 
