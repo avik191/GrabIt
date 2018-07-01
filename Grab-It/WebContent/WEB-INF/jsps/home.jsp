@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-
+<c:set var="contextRoot" value ="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,20 +15,18 @@
 
     <title>GrabIt - ${title } </title>
     
-    <script> window.menu= '${title}' </script>
+    <script> window.menu= '${title}';
+    	window.contextRoot= '${contextRoot}';
+    </script>
     
      <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap.min.css'/>" />
      <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/shop-homepage.css'/>" />
      <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap-theme.css'/>" />
-
-    <!-- Bootstrap core CSS 
-    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">-->
-
-    <!-- Custom styles for this template 
-    <link href="./resources/css/shop-homepage.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/dataTables.bootstrap4.css'/>" />
+    <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap-glyphicons.css'/>" />
     
-    <!-- Bootstrap theme 
-    <link href="./resources/css/bootstrap-theme.css" rel="stylesheet">-->
+
+  
 
   </head>
 
@@ -63,10 +61,15 @@
 	    <c:if test="${isContact == true }">
 	    	<%@ include file="contact_page.jsp" %>
 	    </c:if>
+	    
+	    <c:if test="${showProductPage == true }">
+	    	<%@ include file="single_product_page.jsp" %>
+	    </c:if>
    
    </div>
     <!-- /.container -->
 
+</br></br>
     <!-- Footer -->
     <%@ include file="footer.jsp" %>
 
@@ -76,9 +79,11 @@
     
     <!-- including JQUERY DATA TABLES -->
         <script src="<c:url value='/./resources/js/jquery.dataTables.js'/>"></script>
+     <script src="<c:url value='/./resources/js/dataTables.bootstrap4.js'/>"></script>
         
      <!-- including custom js file -->
         <script src="<c:url value='/./resources/js/myapp.js'/>"></script>
+        
     
     </div>
   </body>

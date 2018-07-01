@@ -24,3 +24,8 @@ html{
 .content{
 	padding-bottom:120px;
 }
+
+.thumbImg{
+	width: 100px;
+	height: 100px;
+}

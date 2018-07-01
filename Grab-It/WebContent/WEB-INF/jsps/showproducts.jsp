@@ -27,6 +27,11 @@
 
 						<c:if test="${isAllProducts == true }">
 
+							<script>
+								window.categoryId = '';
+							</script>
+
+
 							<ol class="breadcrumb">
 								<li><a href="/Grab-It/home">Home</a></li>
 								<li class="active">/All Products</li>
@@ -35,6 +40,10 @@
 						</c:if>
 
 						<c:if test="${isCategoryProduct == true }">
+
+							<script>
+								window.categoryId = '${category.id}';
+							</script>
 
 							<ol class="breadcrumb">
 								<li><a href="/Grab-It/home">Home</a></li>
@@ -55,11 +64,26 @@
 						<table id="tableProductList"
 							class="table table-striped table-borderd">
 							<thead>
-								<tr>
-									<th>ID</th>
-									<th>NAME</th>
+								<tr>	
+									<th></th>					
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th></th>
 								</tr>
 							</thead>
+							
+							<tfoot>
+								<tr>		
+									<th></th>					
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th></th>
+								</tr>
+							</tfoot>
 
 						</table>
 

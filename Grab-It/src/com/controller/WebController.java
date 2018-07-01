@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.DAO.CategoryDAO;
 import com.Entity.Category;
 import com.Entity.Product;
+import com.Exceptions.ProductNotFoundException;
 import com.Service.CategoryService;
 import com.Service.ProductService;
 
@@ -95,6 +96,23 @@ public class WebController {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("title","Contact");
 		modelAndView.addObject("isContact",true);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = {"/show/{id}/product"})
+	protected ModelAndView ProductPage(@PathVariable("id") int id) throws ProductNotFoundException
+	{
+		Product product = productService.getProductFromId(id);
+		if(product == null)
+			throw new ProductNotFoundException("error");
+		product.setViews(product.getViews()+1);
+		boolean b = productService.updateProduct(product);
+		System.out.println(b+" product updated");
+		
+		ModelAndView modelAndView = new ModelAndView("home");
+		modelAndView.addObject("title",product.getName());
+		modelAndView.addObject("showProductPage",true);
+		modelAndView.addObject("product",product);
 		return modelAndView;
 	}
 }
