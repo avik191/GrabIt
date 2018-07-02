@@ -44,8 +44,15 @@ public class WebController {
 	{
 
 		
-		List<Product> list= productService.getActiveProductFromCategory(5);
-		System.out.println(list.size());
+		Product p = new Product();
+		p.setSupplier_id(1);
+		p.setIsActive(1);
+		p.setBrand("Dsadsd");
+		p.setName("ADS");
+		p.setId(8);
+		p.setCategory_id(5);
+		boolean b = productService.addProduct(p);
+		System.out.println(b+" product added");
 
 
 		

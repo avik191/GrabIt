@@ -24,7 +24,6 @@
      <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap-theme.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/dataTables.bootstrap4.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/./resources/css/bootstrap-glyphicons.css'/>" />
-    
 
   
 
@@ -64,6 +63,10 @@
 	    
 	    <c:if test="${showProductPage == true }">
 	    	<%@ include file="single_product_page.jsp" %>
+	    </c:if>
+	    
+	    <c:if test="${userClickManageProduct == true }">
+	    	<%@ include file="manageProducts.jsp" %>
 	    </c:if>
    
    </div>

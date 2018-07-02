@@ -42,7 +42,7 @@ public class ProductDAOImp implements ProductDAO{
 		// TODO Auto-generated method stub
 		try
 		{
-			sessionFactory.getCurrentSession().saveOrUpdate(product);
+			sessionFactory.getCurrentSession().save(product);
 			return true;
 			
 		}catch(Exception e)

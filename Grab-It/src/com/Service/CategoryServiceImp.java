@@ -54,4 +54,10 @@ public class CategoryServiceImp implements CategoryService{
 		return categoryDAO.getCategoryFromId(id);
 	}
 
+	@Override
+	public List<Category> getActiveCategoryList() {
+		// TODO Auto-generated method stub
+		return categoryDAO.getActiveCategoryList();
+	}
+
 }

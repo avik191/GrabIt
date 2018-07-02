@@ -29,6 +29,9 @@
             <li  id="contact" <c:if test="${isContact == true }"> class="active"</c:if>>
               <a class="nav-link" href="/Grab-It/contact">Contact</a>
             </li>
+             <li  id="contact" <c:if test="${userClickManageProduct == true }"> class="active"</c:if>>
+              <a class="nav-link" href="/Grab-It/manage/products">Manage</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -22,12 +22,21 @@ public class CategoryDAOImp implements CategoryDAO{
 	
 	
 	@Override
-	public List<Category> getCategoryList() {
+	public List<Category> getActiveCategoryList() {
 		// TODO Auto-generated method stub
 		
 		String sql = "From Category where isActive = :active";
 		Query query = sessionFactory.getCurrentSession().createQuery(sql);
 		query.setParameter("active",1);
+		return query.list();
+	}
+	
+	@Override
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		
+		String sql = "From Category";
+		Query query = sessionFactory.getCurrentSession().createQuery(sql);
 		return query.list();
 	}
 

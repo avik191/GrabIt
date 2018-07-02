@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="product")
@@ -17,7 +20,7 @@ public class Product {
 	@Column(name="product_id")
 	private int id;
 	
-	@Column(name="unit_price")
+	@Column(name="unit_price") @Min(value=1,message="Unit Price should be greater than 1.")
 	private double unitPrice;
 	
 	private int quantity;
@@ -31,8 +34,13 @@ public class Product {
 	private int purchases;
 	private int views;
 	private String code;
+	
+	@NotBlank(message="Name should not be blank")
 	private String name;
+	
+	@NotBlank(message="Brand should not be blank")
 	private String brand;
+	@NotBlank(message="Description should not be blank")
 	private String description;
 	
 	public Product()
