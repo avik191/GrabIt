@@ -29,6 +29,10 @@
       <property name = "suffix" value = ".jsp" />
    </bean>
    
+   <!-- id should be multipartResolver so that spring resolver can find the bean -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+   
    
    
    <!-- Step 1: Define Database Datasource/connection pool -->

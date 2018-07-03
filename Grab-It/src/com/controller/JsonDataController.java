@@ -26,6 +26,14 @@ public class JsonDataController {
 		return list;
 	}
 	
+	@RequestMapping("/admin/all/products")
+	@ResponseBody
+	public List<Product> getAllProductsForAdmin()
+	{
+		List<Product> list = productService.getProductList();
+		return list;
+	}
+	
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody
 	public List<Product> getProductsFromCategory(@PathVariable("id") int id)
