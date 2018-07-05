@@ -70,6 +70,18 @@
 	    <c:if test="${userClickManageProduct == true }">
 	    	<%@ include file="manageProducts.jsp" %>
 	    </c:if>
+	    
+	    <c:if test="${userClickSignIn == true }">
+	    	<%@ include file="signin.jsp" %>
+	    </c:if>
+	    
+	    <c:if test="${userClickRegister == true }">
+	    	<%@ include file="register.jsp" %>
+	    </c:if>
+	    
+	    <c:if test="${userClickAddress == true }">
+	    	<%@ include file="address.jsp" %>
+	    </c:if>
    
    </div>
     <!-- /.container -->

@@ -71,11 +71,24 @@ if ($table.length) {
 									str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 								}
 								else{
-									str += '<a href="'
-										+ window.contextRoot
-										+ '/add/'
-										+ data
-										+ '/cart" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+									if(window.userRole == "ADMIN")
+									{
+										str += '<a href="'
+											+ window.contextRoot
+											+ '/manage/'
+											+ data
+											+ '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
+				
+									}
+									else{
+										str += '<a href="'
+											+ window.contextRoot
+											+ '/add/'
+											+ data
+											+ '/cart" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+				
+									}
+									
 								}
 								
 								
