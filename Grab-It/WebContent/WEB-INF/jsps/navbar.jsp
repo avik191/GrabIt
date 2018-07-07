@@ -23,9 +23,6 @@
 				<li id="home_page"
 					<c:if test="${isHome == true }"> class="active"</c:if>><a
 					class="nav-link" href="/Grab-It/home">Home</a></li>
-				<li id="about"
-					<c:if test="${isAbout == true }"> class="active"</c:if>><a
-					class="nav-link" href="/Grab-It/about">About</a></li>
 				<li id="products"
 					<c:if test="${isAllProducts == true }"> class="active"</c:if>>
 					<a class="nav-link" href="/Grab-It/all/Products">Products</a>

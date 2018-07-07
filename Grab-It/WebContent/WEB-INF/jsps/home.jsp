@@ -82,6 +82,14 @@
 	    <c:if test="${userClickAddress == true }">
 	    	<%@ include file="address.jsp" %>
 	    </c:if>
+	    
+	    <c:if test="${userClickShowCart == true }">
+	    	<%@ include file="cart.jsp" %>
+	    </c:if>
+	    
+	    <c:if test="${isReview == true }">
+	    	<%@ include file="review.jsp" %>
+	    </c:if>
    
    </div>
     <!-- /.container -->

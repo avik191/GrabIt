@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.Entity.UserModel"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,17 +60,52 @@
 					</c:otherwise>
 				</c:choose>
 
+
+				<%
+					UserModel user1 = (UserModel) session.getAttribute("loggedUser");
+					if (user1 != null) {
+						if (user1.getRole().equals("ADMIN")) {
+				%>
+
+				<a href="/Grab-It/manage/${product.id }/product"
+					class="btn btn-warning"><span
+					class="glyphicon glyphicon-pencil"></span></a>
+				<%
+					} else {
+				%>
+
 				<c:choose>
 					<c:when test="${product.quantity<1 }">
 						<a href="javascript:void(0)" class="btn btn-success disabled"><span
 							class="glyphicon glyphicon-shopping-cart"><strike>cart</strike></span></a>
 					</c:when>
 					<c:otherwise>
-						<a href="/Grab-It/add/${product.id }/cart" class="btn btn-success"><span
+						<a href="/Grab-It/cart/add/${product.id }/product" class="btn btn-success"><span
 							class="glyphicon glyphicon-shopping-cart">cart</span></a>
 
 					</c:otherwise>
 				</c:choose>
+
+				<%
+					}
+					} else {
+				%>
+				<c:choose>
+					<c:when test="${product.quantity<1 }">
+						<a href="javascript:void(0)" class="btn btn-success disabled"><span
+							class="glyphicon glyphicon-shopping-cart"><strike>cart</strike></span></a>
+					</c:when>
+					<c:otherwise>
+						<a href="/Grab-It/cart/add/${product.id }/product" class="btn btn-success"><span
+							class="glyphicon glyphicon-shopping-cart">cart</span></a>
+
+					</c:otherwise>
+				</c:choose>
+
+				<%
+					}
+				%>
+
 
 
 				&#160; <a href="/Grab-It/all/Products" class="btn btn-primary">Back</a>

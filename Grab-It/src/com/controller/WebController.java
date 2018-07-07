@@ -2,7 +2,9 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -20,15 +22,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.DAO.CategoryDAO;
 import com.Entity.Address;
 import com.Entity.Cart;
+import com.Entity.CartLine;
 import com.Entity.Category;
 import com.Entity.Login;
 import com.Entity.Product;
 import com.Entity.User;
 import com.Entity.UserModel;
 import com.Exceptions.ProductNotFoundException;
+import com.Service.CartLineService;
 import com.Service.CategoryService;
 import com.Service.ProductService;
 import com.Service.UserService;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class WebController {
@@ -41,61 +46,36 @@ public class WebController {
 	ProductService productService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	CartLineService cartLineService;
+	@Autowired
+	HttpSession session;
+	@Autowired
+	HttpServletRequest request;
+	@Autowired
+	HttpServletResponse response;
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	protected ModelAndView homePage() throws Exception {
+	protected ModelAndView homePage(@RequestParam(name = "result", required = false) String result) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("isHome", true);
 		modelAndView.addObject("categories", categoryService.getCategoryList());
+		
+		List<Product> list = productService.getLatestActiveProducts(6);
+		modelAndView.addObject("productList", list);
+
+		if(result!=null) 
+		{
+				modelAndView.addObject("message","Your order has been placed successfully!!");
+
+		}
 		return modelAndView;
 	}
 
-	// testing urls
-	@RequestMapping(value = { "/test" })
-	protected ModelAndView addCategory() throws Exception {
+	
 
-		User user = new User();
-		user.setFirstName("Shikhar");
-		user.setLastName("Dhawan");
-		user.setEmail("sd@gmail.com");
-		user.setContactNumber("1234512345");
-		user.setRole("USER");
-		user.setPassword("12345");
-
-		// Cart cart = new Cart();
-		// cart.setUser(user);
-
-		userService.addUser(user);
-
-		Address address = new Address();
-		address.setAddressLineOne("101/B Jadoo Society, Krissh Nagar");
-		address.setAddressLineTwo("Near Kaabil Store");
-		address.setCity("Mumbai");
-		address.setState("Maharashtra");
-		address.setCountry("India");
-		address.setPostalCode("400001");
-		address.setBilling(1);
-		address.setUserID(user.getId());
-
-		userService.addAddress(address);
-
-		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("title", "Home");
-		modelAndView.addObject("isHome", true);
-		modelAndView.addObject("categories", categoryService.getCategoryList());
-		return modelAndView;
-	}
-
-	//
-	@RequestMapping(value = "/about")
-	protected ModelAndView about() {
-		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("title", "About");
-		modelAndView.addObject("isAbout", true);
-		return modelAndView;
-	}
 
 	@RequestMapping(value = "/all/Products")
 	protected ModelAndView allProducts() {
@@ -159,7 +139,7 @@ public class WebController {
 			if (operation.equals("success"))
 				modelAndView.addObject("message", "Valid User");
 			if (operation.equals("addressSuccess"))
-				modelAndView.addObject("message", "Address added");
+				modelAndView.addObject("message", "User added");
 			if (operation.equals("failure"))
 				modelAndView.addObject("message", "Address not added");
 
@@ -189,6 +169,8 @@ public class WebController {
 					userModel.setFirstName(user.getFirstName());
 					userModel.setLastName(user.getLastName());
 					userModel.setRole(user.getRole());
+					userModel.setPhone(user.getContactNumber());
+					userModel.setEmail(user.getEmail());
 					
 					if(user.getRole().equals("USER"))
 					{
@@ -301,5 +283,25 @@ public class WebController {
 		modelAndView.addObject("title", "unauthorizedAccess");
 		return modelAndView;
 
+	}
+	
+	@RequestMapping(value = "/logout")
+	protected ModelAndView logout() {
+		
+		session.invalidate();
+		Cookie[] cookies = request.getCookies();
+		for(int i =0;i<cookies.length;i++)
+		{
+			cookies[i].setMaxAge(0);
+			cookies[i].setPath("/");
+		     response.addCookie(cookies[i]);
+		}
+
+		
+		ModelAndView modelAndView = new ModelAndView("home");
+		modelAndView.addObject("title", "Home");
+		modelAndView.addObject("isHome", true);
+		modelAndView.addObject("categories", categoryService.getCategoryList());
+		return modelAndView;
 	}
 }

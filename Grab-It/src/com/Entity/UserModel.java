@@ -6,9 +6,24 @@ public class UserModel {
 	private String firstName;
 	private String lastName;
 	private String role;
+	private String phone;
 	private Cart cart;
 	private Address address;
+	private String email;
 	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public int getId() {
 		return id;
 	}
