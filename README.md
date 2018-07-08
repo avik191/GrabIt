@@ -1,6 +1,6 @@
 # Grab-It
 
-<p> A Simple e-commerce online platform made using Spring MVC, Hibernate, Mysql and Bootstrap</p>
+<p> A Simple e-commerce online platform made using Java, Spring MVC, Hibernate, Mysql and Bootstrap</p>
   
   <p align="center">
   <img src="https://github.com/avik191/GrabIt/blob/master/Grab-It/WebContent/WEB-INF/resources/images/snap1.PNG" width="400"/>  &nbsp;&nbsp;
