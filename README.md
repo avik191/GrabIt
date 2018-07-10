@@ -14,9 +14,7 @@
    
 
 
-**Note**
-For logging in as an admin use email:"admin@gmail.com" and password:"admin" </br>
-For logging in as an user use email:"john@gmail.com" and password:"qwerty"  or register as a new user.</br>
+
 
 
 
